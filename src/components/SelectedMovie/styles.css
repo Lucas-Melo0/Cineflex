@@ -1,0 +1,34 @@
+.selectedMovie {
+    min-width: 20vw;
+    margin: 15px
+}
+
+.selectedMovie > p {
+    margin-top: 40px;
+    margin-bottom: 30px;
+    text-align: center;
+    color: #293845;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 28px;
+}
+.availableDay {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+}
+
+.availabeTime{
+    margin-top: 10px;
+    margin-right: 15px;
+    font-size: 18px;
+    color: #FFFFFF;
+    text-align: center;
+    width: 83px;
+    height: 43px;
+    background: #E8833A;
+    border-radius: 3px;
+}
+.availableDate {
+    margin-top: 20px;
+}

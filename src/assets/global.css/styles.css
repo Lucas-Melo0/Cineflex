@@ -2,3 +2,6 @@
 body {
     font-family: 'Roboto', sans-serif;
 }
+button {
+    all:unset;
+}
