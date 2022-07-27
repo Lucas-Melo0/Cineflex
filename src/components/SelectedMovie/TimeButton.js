@@ -1,14 +1,14 @@
 export default function TimeButton({ movieData }) {
 
-    
     return (
         <>
-            {movieData.showtimes.map(value => {
+            {movieData[0].showtimes.map(value => {
                 return (
-                    <button className="availabeTime">{value.name}</button>
+                        <button className="availabeTime">{value.name}  </button>
+
                 )
             })}
-              
+
         </>
 
     )

@@ -3,7 +3,7 @@ import "./styles.css";
 import axios from "axios";
 import TimeButton from "./TimeButton";
 import { useState, useEffect } from "react";
-export default function SelectedMovie({ selectedId }) {
+export default function SelectedMovie({ selectedId,imageSource }) {
 
     const [movieData, setMovieData] = useState([]);
     
@@ -28,7 +28,7 @@ export default function SelectedMovie({ selectedId }) {
                     )
                 })}
             </div>
-            <Footer />
+            <Footer selectedId={selectedId} imageSource ={imageSource}  />
         </>
 
     )

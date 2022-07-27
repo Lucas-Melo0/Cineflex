@@ -1,18 +1,9 @@
-import axios from "axios";
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
 
-export default function Movie({ setSelectedId }) {
 
-    const [imageSource, setImageSource] = useState([]);
+export default function Movie({ setSelectedId,imageSource }) {
 
-    useEffect(() => {
-        const promise = axios.get("https://mock-api.driven.com.br/api/v5/cineflex/movies");
-        promise.then(response => {
-            setImageSource(response.data);
-        });
-    }, []);
-
+  
     return (
 
         <>

@@ -1,6 +1,8 @@
 .selectedMovie {
+    
     min-width: 20vw;
-    margin: 15px
+    margin: 15px;
+    margin-bottom: 110px;
 }
 
 .selectedMovie > p {
