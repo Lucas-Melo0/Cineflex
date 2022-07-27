@@ -1,6 +1,6 @@
 import Footer from "../Footer/Footer"
 import "./styles.css"
-export default function SelectedMovie() {
+export default function SelectedMovie({selectedId}) {
     return (
         <>
             <div className="selectedMovie">
