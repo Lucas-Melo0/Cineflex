@@ -1,19 +1,32 @@
-import Footer from "../Footer/Footer"
-import "./styles.css"
-export default function SelectedMovie({selectedId}) {
+import Footer from "../Footer/Footer";
+import "./styles.css";
+import axios from "axios";
+import TimeButton from "./TimeButton";
+import { useState, useEffect } from "react";
+export default function SelectedMovie({ selectedId }) {
+
+    const [movieData, setMovieData] = useState([]);
+    
+    useEffect(() => {
+        const promise = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/movies/${selectedId}/showtimes`)
+        promise.then((response) => setMovieData(response.data.days))
+
+    }, [selectedId]);
+
     return (
         <>
             <div className="selectedMovie">
                 <p>Selecione o horário</p>
-                <div className="availability">
-                    <div className="availableDate">
-                        <p className="availableDay">Quinta-feira - 24/06/2021</p>
-                        <button className="availabeTime">15:00</button>
-                        <button className="availabeTime">15:00</button>
-                    </div>
-
-
-                </div>
+                {movieData.map(value => {
+                    return (
+                        <div className="availability">
+                            <div className="availableDate">
+                                <p className="availableDay">{value.weekday} - {value.date}</p>
+                                <TimeButton movieData={movieData}/>
+                            </div>
+                        </div>
+                    )
+                })}
             </div>
             <Footer />
         </>

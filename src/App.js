@@ -15,8 +15,7 @@ export default function App() {
     function MoviePage(){
         let { movieId} = useParams()
     }
-    console.log(selectedId)
-
+    
     return (
         <Router>
             <Header />
