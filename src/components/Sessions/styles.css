@@ -1,0 +1,28 @@
+.movieSessions {
+    margin: 20px;
+}
+
+.movieSessions > p {
+    margin-top: 40px;
+    margin-bottom: 30px;
+    text-align: center;
+    color: #293845;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 28px;
+}
+.movieSeats {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+.seat {
+    margin-right: 5px;
+    text-align: center;
+    width: 26px;
+    height: 26px;
+    background: #C3CFD9;
+    border: 1px solid #808F9D;
+    border-radius: 12px;
+}
