@@ -1,15 +1,15 @@
 import { Link } from "react-router-dom";
 
 
-export default function Movie({ setSelectedId,imageSource }) {
+export default function Movie({ setSelectedId, movieData }) {
 
   
     return (
 
         <>
-            {imageSource.map(value => {
+            {movieData.map(value => {
                 return (<div className="movie">
-                    <Link to={`/movie/:${value.id}`}>
+                    <Link to={`/sessoes/${value.id}`}>
                         <img onClick={() => setSelectedId(value.id)} src={value.posterURL} alt="movie poster"></img>
                     </Link>
 

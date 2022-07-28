@@ -5,3 +5,9 @@ body {
 button {
     all:unset;
 }
+a{
+    text-decoration: none;
+}
+input {
+    all:unset;
+}

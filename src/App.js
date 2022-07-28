@@ -5,34 +5,32 @@ import Header from "./components/Header/Header";
 import Home from "./components/Home/Home";
 import axios from "axios";
 import SelectedMovie from "./components/SelectedMovie/SelectedMovie";
-import { BrowserRouter as Router, Routes, Route, useParams } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 
 export default function App() {
 
-    const [imageSource, setImageSource] = useState([]);
-    
+    const [movieData, setMovieData] = useState([]);
+    const [selectedId, setSelectedId] = useState(0);
+    const [time, setTime] = useState("");
+
     useEffect(() => {
         const promise = axios.get("https://mock-api.driven.com.br/api/v5/cineflex/movies");
         promise.then(response => {
-            setImageSource(response.data);
+            setMovieData(response.data);
         });
     }, []);
 
-    const [selectedId, setSelectedId] = useState(0)
 
-    function MoviePage(){
-        let { movieId} = useParams()
-    }
     
     return (
         <Router>
             <Header />
             <Routes>
-                <Route path="/" element={<Home imageSource ={imageSource}setSelectedId={setSelectedId}/>} />
-                <Route path="/movie/:movieId" element={<SelectedMovie selectedId={selectedId} imageSource ={imageSource}/>} />
-                <Route path="/sessao/x" element ={<Sessions/>} />
+                <Route path="/" element={<Home movieData ={movieData}setSelectedId={setSelectedId}/>} />
+                <Route path="/sessoes/:movieId" element={<SelectedMovie setTime={setTime} selectedId={selectedId} movieData ={movieData}/>} />
+                <Route path="/assentos/:idSessao" element ={<Sessions time={time} movieData={movieData} selectedId ={selectedId}/>} />
             </Routes>
             
 

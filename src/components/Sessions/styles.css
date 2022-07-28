@@ -1,5 +1,6 @@
 .movieSessions {
     margin: 20px;
+    margin-bottom: 110px;
 }
 
 .movieSessions > p {
@@ -17,12 +18,67 @@
     justify-content: flex-start;
     align-items: center;
 }
-.seat {
+.seat.false{
+    margin-top: 10px;
+    margin-right: 5px;
+    text-align: center;
+    width: 26px;
+    height: 26px;
+    background: #FBE192;
+    border: 1px solid #808F9D;
+    border-radius: 15px;
+}
+
+.seat.true {
+    margin-top: 10px;
     margin-right: 5px;
     text-align: center;
     width: 26px;
     height: 26px;
     background: #C3CFD9;
     border: 1px solid #808F9D;
-    border-radius: 12px;
+    border-radius: 15px;
+
+}
+.seat.false.selected {
+    margin-top: 10px;
+    margin-right: 5px;
+    text-align: center;
+    width: 26px;
+    height: 26px;
+    background: #8DD7CF;
+    border: 1px solid #808F9D;
+    border-radius: 15px;
+
+}
+.seatsLabel {
+    margin-bottom: 50px;
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+}
+.inputContainer{
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+input {
+    width: 327px;
+    height: 51px;
+    background: #FFFFFF;
+    border: 1px solid #D5D5D5;
+    border-radius: 3px;
+}
+.buttonContainer {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+.buttonContainer button {
+    font-size: 18px;
+    color: #FFFFFF;
+    width: 225px;
+    height: 42px;
+    background: #E8833A;
+    border-radius: 3px;
 }
