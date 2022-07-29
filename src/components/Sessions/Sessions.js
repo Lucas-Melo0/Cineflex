@@ -1,19 +1,22 @@
 import Footer from "../Footer/Footer";
 import "./styles.css"
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Seats from "./Seats";
 export default function Sessions({ movieData, selectedId, time, sessionId, weekday }) {
 
     const [seatsInformation, setSeatsInformation] = useState([]);
+    const [seatsId, setSeatsId] = useState([]);
+    const [seatsNumber, setSeatsNumber] = useState([]);
     const [isWarningVisible, setIsWarningVisible] = useState(false);
     const [userName, setUserName] = useState("");
     const [userCPF, setUserCPF] = useState("");
     const [userNameError, setUserNameError] = useState(false);
     const [userCPFError, setUserCPFError] = useState(false);
     const validateCPF = new RegExp("([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})")
-    const validateName = new RegExp(".{8,}");
-
+    const validateName = new RegExp(".{3,}");
+    let navigate = useNavigate();
     const validate = () => {
         if (!validateName.test(userName)) {
             setUserNameError(true)
@@ -26,17 +29,30 @@ export default function Sessions({ movieData, selectedId, time, sessionId, weekd
         } else {
             setUserCPFError(false)
         }
-
     }
-
     useEffect(() => {
         const promise = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/showtimes/${sessionId}/seats`)
         promise.then((response) => setSeatsInformation(response.data.seats))
     }, [sessionId])
 
-    function handeSubmit(e) {
+    function handleSubmit(e) {
         e.preventDefault();
-
+        const send = axios.post("https://mock-api.driven.com.br/api/v7/cineflex/seats/book-many",
+        {
+            ids: seatsId,
+            name: userName,
+            cpf: userCPF
+        });
+        send.then(()=> {
+            navigate('/sucesso',{state:{
+                cpf: userCPF,
+                name:userName,
+                weekday:weekday,
+                time:time,
+                seatsNumber:seatsNumber
+            }})
+        }
+        )
     }
     return (
         <>
@@ -45,7 +61,13 @@ export default function Sessions({ movieData, selectedId, time, sessionId, weekd
                 <div className="movieSeats">
 
                     {seatsInformation.map((value, index) => {
-                        return <Seats key={index} setIsWarningVisible={setIsWarningVisible} value={value} />
+                        return <Seats key={index}
+                            setSeatsId={setSeatsId}
+                            setIsWarningVisible={setIsWarningVisible}
+                            value={value}
+                            seatsId={seatsId}
+                            setSeatsNumber={setSeatsNumber}
+                            seatsNumber={seatsNumber}/>
                     })}
                 </div>
                 <div className="seatsLabel">
@@ -66,26 +88,31 @@ export default function Sessions({ movieData, selectedId, time, sessionId, weekd
                 {
                     isWarningVisible ? <p className="warning">Esse assento não está disponivel</p> : null
                 }
-                <form onSubmit={handeSubmit}>
+                <form onSubmit={handleSubmit}>
                     <div className="inputContainer">
                         <label htmlFor="username">Nome do Comprador:</label>
                         <input id="username"
                             value={userName}
+                            type="text"
+                            pattern={".{3,}"}
                             onChange={(e) => setUserName(e.target.value)}
                             placeholder="Digite seu nome..."
-                            required onInvalid={e => e.target.setCustomValidity('Digite seu nome')}>
+                            required
+                            onInvalid={e => e.target.setCustomValidity('O Nome precisa ter mais que três letras')}>
                         </input>
-                        {userNameError && <p>Digite um nome válido</p>}
+                        {userNameError && <p className="warning">Digite um nome válido</p>}
                     </div>
                     <div className="inputContainer">
                         <label htmlFor="userCPF">CPF do Comprador:</label>
                         <input id="userCPF"
                             value={userCPF}
+                            type="text"
+                            pattern={"([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})"}
                             onChange={(e) => setUserCPF(e.target.value)}
                             placeholder="Digite seu CPF..."
-                            required onInvalid={e => e.target.setCustomValidity('Digite um CPF válido')}>
+                            required >
                         </input>
-                        {userCPFError && <p>Digite um CPF válido</p>}
+                        {userCPFError && <p className="warning">Digite um CPF válido</p>}
                     </div>
                     <div className="buttonContainer">
                         <button onClick={validate}>Reservar assento(s)</button>

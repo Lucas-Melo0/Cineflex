@@ -91,7 +91,7 @@ input {
     background: #E8833A;
     border-radius: 3px;
 }
-.movieSessions > p.warning {
+.movieSessions  p.warning {
     color: crimson;
-    font-size: 20px;
+    font-size: 18px;
 } 

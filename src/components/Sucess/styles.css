@@ -1,0 +1,34 @@
+.sucessPage {
+    display: flex;
+    flex-direction: column;
+    margin: 0px 10px;
+}
+.sucessMessage{
+    margin-top: 35px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.sucessMessage p {
+    width: 180px;
+    font-weight: 700;
+    font-size: 24px;
+    text-align: center;
+    color: #247A6B;
+}
+.infoContainer {
+    margin-top: 50px;
+}
+.header {
+    font-weight: 700;
+    font-size: 24px;
+    color: #293845;
+}
+.movieInfo{
+    margin-top: 10px;
+    font-weight: 400;
+    font-size: 22px;
+    color: #293845;
+}
+

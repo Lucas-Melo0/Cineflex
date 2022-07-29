@@ -3,6 +3,7 @@ import "./assets/global.css/styles.css";
 import Sessions from "./components/Sessions/Sessions";
 import Header from "./components/Header/Header";
 import Home from "./components/Home/Home";
+import Sucess from "./components/Sucess/Sucess";
 import axios from "axios";
 import SelectedMovie from "./components/SelectedMovie/SelectedMovie";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -31,6 +32,7 @@ export default function App() {
                 <Route path="/" element={<Home movieData ={movieData} setSelectedId = {setSelectedId}/>} />
                 <Route path="/sessoes/:movieId" element={<SelectedMovie setWeekday={setWeekday} setSessionId ={setSessionId} setTime={setTime} selectedId={selectedId} movieData ={movieData}/>} />
                 <Route path="/assentos/:idSessao" element ={<Sessions weekday={weekday} sessionId={sessionId} time={time} movieData={movieData} selectedId ={selectedId}/>} />
+                <Route path="/sucesso" element ={<Sucess/>}/>
             </Routes>
         </Router>
 
