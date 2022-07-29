@@ -1,15 +1,14 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
-export default function TimeButton({ movieInfo , selectedId, setTime}) {
+export default function TimeButton({ movieInfo , selectedId, setTime,setSessionId, value, setWeekday }) {
 
     
     
     return (
         <>
-            {movieInfo[0].showtimes.map(value => {
+            {movieInfo[0].showtimes.map(element => {
                 return (
                     <Link to={`/assentos/${selectedId}`}>
-                        <button onClick={() => setTime(value.name) } className="availabeTime">{value.name}  </button>
+                        <button onClick={() => {setTime(element.name);setSessionId(element.id);setWeekday(value.weekday)}} className="availabeTime">{element.name}  </button>
                     </Link>
 
                 )

@@ -1,5 +1,5 @@
-import "./styles.css"
-export default function Footer({ movieData,selectedId,time }) {
+import "./styles.css";
+export default function Footer({ movieData,selectedId,time,weekday }) {
 
    
     
@@ -11,7 +11,7 @@ export default function Footer({ movieData,selectedId,time }) {
             </div>
             <div className="movieInfo">
                 <p>{movieData[selectedId-1].title}</p>
-                <p>{time}</p>
+                <p>{weekday} - {time}</p>
             </div>
 
         </footer>

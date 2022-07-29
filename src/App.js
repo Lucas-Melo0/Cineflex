@@ -14,6 +14,8 @@ export default function App() {
     const [movieData, setMovieData] = useState([]);
     const [selectedId, setSelectedId] = useState(0);
     const [time, setTime] = useState("");
+    const [sessionId, setSessionId] = useState(0);
+    const [weekday, setWeekday] = useState("");
 
     useEffect(() => {
         const promise = axios.get("https://mock-api.driven.com.br/api/v5/cineflex/movies");
@@ -22,19 +24,14 @@ export default function App() {
         });
     }, []);
 
-
-    
     return (
         <Router>
             <Header />
             <Routes>
-                <Route path="/" element={<Home movieData ={movieData}setSelectedId={setSelectedId}/>} />
-                <Route path="/sessoes/:movieId" element={<SelectedMovie setTime={setTime} selectedId={selectedId} movieData ={movieData}/>} />
-                <Route path="/assentos/:idSessao" element ={<Sessions time={time} movieData={movieData} selectedId ={selectedId}/>} />
+                <Route path="/" element={<Home movieData ={movieData} setSelectedId = {setSelectedId}/>} />
+                <Route path="/sessoes/:movieId" element={<SelectedMovie setWeekday={setWeekday} setSessionId ={setSessionId} setTime={setTime} selectedId={selectedId} movieData ={movieData}/>} />
+                <Route path="/assentos/:idSessao" element ={<Sessions weekday={weekday} sessionId={sessionId} time={time} movieData={movieData} selectedId ={selectedId}/>} />
             </Routes>
-            
-
-
         </Router>
 
     )

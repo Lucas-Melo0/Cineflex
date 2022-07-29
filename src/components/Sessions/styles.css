@@ -49,7 +49,16 @@
     background: #8DD7CF;
     border: 1px solid #808F9D;
     border-radius: 15px;
-
+}
+.seat.true.selected {
+    margin-top: 10px;
+    margin-right: 5px;
+    text-align: center;
+    width: 26px;
+    height: 26px;
+    background: #8DD7CF;
+    border: 1px solid #808F9D;
+    border-radius: 15px;
 }
 .seatsLabel {
     margin-bottom: 50px;
@@ -82,3 +91,7 @@ input {
     background: #E8833A;
     border-radius: 3px;
 }
+.movieSessions > p.warning {
+    color: crimson;
+    font-size: 20px;
+} 
