@@ -8,20 +8,20 @@
     line-height: 28px;
 }
 .movies {
-    width: 100vw;
-    display: flex;
-    justify-content: space-evenly;
+    width: 90vw;
+    margin: 0 auto;
+    justify-content: center;
     align-items: center;
     display: flex;
     flex-wrap: wrap;
+    row-gap: 15px;
+    column-gap: 10px;
     
 }
 .movie {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 10px;
-    margin-bottom: 15px;
     width: 145px;
     height: 209px;
     background: #FFFFFF;

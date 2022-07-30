@@ -31,9 +31,17 @@ export default function Sessions({ movieData, selectedId, time, sessionId, weekd
         }
     }
     useEffect(() => {
-        const promise = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/showtimes/${sessionId}/seats`)
+        const promise = axios.get(`https://mock-api.driven.com.br/api/v7/cineflex/showtimes/${sessionId}/seats`)
         promise.then((response) => setSeatsInformation(response.data.seats))
     }, [sessionId])
+    
+    if (seatsInformation.length === 0) {
+        return (
+            <>
+                <div className="loader"></div>
+            </>
+        )
+    }
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -43,13 +51,14 @@ export default function Sessions({ movieData, selectedId, time, sessionId, weekd
             name: userName,
             cpf: userCPF
         });
-        send.then(()=> {
+        send.then((response)=> {
+            console.log(response)
             navigate('/sucesso',{state:{
                 cpf: userCPF,
                 name:userName,
                 weekday:weekday,
                 time:time,
-                seatsNumber:seatsNumber
+                seatsNumber:seatsNumber,
             }})
         }
         )
@@ -97,8 +106,7 @@ export default function Sessions({ movieData, selectedId, time, sessionId, weekd
                             pattern={".{3,}"}
                             onChange={(e) => setUserName(e.target.value)}
                             placeholder="Digite seu nome..."
-                            required
-                            onInvalid={e => e.target.setCustomValidity('O Nome precisa ter mais que três letras')}>
+                            required>
                         </input>
                         {userNameError && <p className="warning">Digite um nome válido</p>}
                     </div>

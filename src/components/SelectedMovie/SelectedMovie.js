@@ -8,10 +8,18 @@ export default function SelectedMovie({ selectedId,movieData,setTime,setSessionI
     
     const [movieInfo, setMovieInfo] = useState([]);
     useEffect(() => {
-        const promise = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/movies/${selectedId}/showtimes`)
+        const promise = axios.get(`https://mock-api.driven.com.br/api/v7/cineflex/movies/${selectedId}/showtimes`)
         promise.then((response) => setMovieInfo(response.data.days))
 
     }, [selectedId]);
+    if (movieInfo.length === 0) {
+        return (
+            <>
+                <div className="loader"></div>
+            </>
+
+        )
+    }
     return (
         <>
             <div className="selectedMovie">

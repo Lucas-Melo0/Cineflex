@@ -10,3 +10,10 @@ header {
     line-height: 40px;
     
 }
+ion-icon {
+    right: 15px;
+    top: 20px;
+    position: absolute;
+    font-size: 30px;
+    color: #E8833A;
+}
