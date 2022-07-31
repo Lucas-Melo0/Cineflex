@@ -1,19 +1,17 @@
 import { useState } from "react";
-export default function Seats({ value, setIsWarningVisible, seatsNumber, setSeatsNumber, setForm, form}){
+export default function Seats({ value, setIsWarningVisible, setForm, form }) {
     const [buttonClass, setButtonClass] = useState("");
 
-    function addForm(value){
+    function addForm(value) {
 
-        let newForm = {idAssento:value.id ,nome: "", cpf:""}
-        setForm([...form,newForm])
-        console.log(form)
+        let newForm = { idAssento: value.id, nome: "", cpf: "" }
+        setForm([...form, newForm])
 
     }
 
-    function ChangeSeatState(value){
-        if (value.isAvailable === true && buttonClass!== "selected"){
+    function ChangeSeatState(value) {
+        if (value.isAvailable === true && buttonClass !== "selected") {
             setButtonClass("selected")
-            setSeatsNumber([...seatsNumber,value.name])
             setIsWarningVisible(false)
             addForm(value)
         }
@@ -21,12 +19,14 @@ export default function Seats({ value, setIsWarningVisible, seatsNumber, setSeat
             setIsWarningVisible(true)
 
         }
-        if (buttonClass === "selected"){
-            setButtonClass("");
-            seatsNumber.pop()
-            let formUpdate = [...form]
-            formUpdate.pop()
-            setForm(formUpdate)
+        if (buttonClass === "selected") {
+            let message = window.confirm("Deseja realmente remover o assento");
+            if (message === true) {
+                setButtonClass("");
+                let formUpdate = [...form]
+                formUpdate.pop()
+                setForm(formUpdate)
+            }
         }
 
     }

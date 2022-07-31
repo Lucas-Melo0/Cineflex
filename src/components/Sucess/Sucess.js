@@ -4,8 +4,6 @@ export default function Sucess({ selectedId, movieData }) {
 
     const navigate = useNavigate();
     const info = useLocation();
-    console.log(info)
-
 
     return (
         <div className="sucessPage">
