@@ -24,8 +24,7 @@ export default function Seats({ value, setIsWarningVisible, setForm, form }) {
             if (message === true) {
                 setButtonClass("");
                 let formUpdate = [...form]
-                formUpdate.pop()
-                setForm(formUpdate)
+                setForm(formUpdate.filter(element=> element.idAssento !== value.id))
             }
         }
 
