@@ -11,6 +11,7 @@ header {
     
 }
 ion-icon {
+    cursor: pointer;
     right: 15px;
     top: 20px;
     position: absolute;
