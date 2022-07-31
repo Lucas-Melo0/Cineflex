@@ -1,8 +1,9 @@
 import "./styles.css";
+import { useLocation } from "react-router-dom";
 export default function Footer({ movieData,selectedId,time,weekday }) {
 
-   
-    
+ 
+    const path= useLocation().pathname;
 
     return (
         <footer>
@@ -11,9 +12,10 @@ export default function Footer({ movieData,selectedId,time,weekday }) {
             </div>
             <div className="movieInfo">
                 <p>{movieData[selectedId-1].title}</p>
-                <p>{weekday} - {time}</p>
+                {
+                path.includes(["/assentos"]) && <p>{weekday} - {time}</p>
+                }
             </div>
-
         </footer>
     )
 }

@@ -1,9 +1,10 @@
 import "./styles.css";
 import { useLocation, useNavigate } from "react-router-dom";
-export default function Sucess({selectedId, movieData, setSelectedId }) {
+export default function Sucess({ selectedId, movieData }) {
 
     const navigate = useNavigate();
     const info = useLocation();
+    console.log(info)
 
 
     return (
@@ -19,18 +20,30 @@ export default function Sucess({selectedId, movieData, setSelectedId }) {
             <div className="infoContainer">
                 <p className="header">Ingressos</p>
                 {
-                    info.state.seatsNumber.map(value => {
-                        return <p className="movieInfo">Assento {value}</p>
+                    info.state.form.map(value => {
+                        return <p className="movieInfo">Assento {value.idAssento % 50}</p>
                     })
                 }
             </div>
             <div className="infoContainer">
                 <p className="header">Comprador</p>
-                <p className="movieInfo">Nome: {info.state.name} </p>
-                <p className="movieInfo">CPF: {info.state.cpf}</p>
+                {
+                    info.state.form.map(value => {
+                        return (
+                            <>
+                                <p className="movieInfo">Nome: {value.nome} </p>
+                                <p className="movieInfo">CPF: {value.cpf}</p>
+                            </>
+
+
+                        )
+
+                    })
+                }
+
             </div>
             <div className="sucessButton">
-                <button onClick={()=> navigate(-3)}>Voltar para Home</button>
+                <button onClick={() => navigate(-3)}>Voltar para Home</button>
             </div>
         </div>
 

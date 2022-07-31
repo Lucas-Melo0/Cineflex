@@ -8,7 +8,9 @@ export default function Home( { setSelectedId,movieData }){
        <div className="home">
            <p>Selecione o filme</p>
            <div className="movies">
-               <Movie movieData={movieData} setSelectedId={setSelectedId}/>
+               {movieData.map((value,index)=>{
+                   return <Movie key ={index} value={value} setSelectedId={setSelectedId}/>
+               })}  
            </div>
        </div>
     )

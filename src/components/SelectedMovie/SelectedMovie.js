@@ -12,14 +12,12 @@ export default function SelectedMovie({ selectedId,movieData,setTime,setSessionI
         promise.then((response) => setMovieInfo(response.data.days))
 
     }, [selectedId]);
+    
     if (movieInfo.length === 0) {
-        return (
-            <>
-                <div className="loader"></div>
-            </>
-
-        )
+        return <div className="loader"></div>
     }
+
+
     return (
         <>
             <div className="selectedMovie">

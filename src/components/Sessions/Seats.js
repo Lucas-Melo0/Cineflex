@@ -1,12 +1,21 @@
 import { useState } from "react";
-export default function Seats({ value, setIsWarningVisible, seatsId, setSeatsId, seatsNumber, setSeatsNumber }){
+export default function Seats({ value, setIsWarningVisible, seatsNumber, setSeatsNumber, setForm, form}){
     const [buttonClass, setButtonClass] = useState("");
+
+    function addForm(value){
+
+        let newForm = {idAssento:value.id ,nome: "", cpf:""}
+        setForm([...form,newForm])
+        console.log(form)
+
+    }
+
     function ChangeSeatState(value){
         if (value.isAvailable === true && buttonClass!== "selected"){
             setButtonClass("selected")
-            setSeatsId([...seatsId,value.id])
             setSeatsNumber([...seatsNumber,value.name])
             setIsWarningVisible(false)
+            addForm(value)
         }
         else if (value.isAvailable === false) {
             setIsWarningVisible(true)
@@ -14,9 +23,10 @@ export default function Seats({ value, setIsWarningVisible, seatsId, setSeatsId,
         }
         if (buttonClass === "selected"){
             setButtonClass("");
-            seatsId.pop()
             seatsNumber.pop()
-           
+            let formUpdate = [...form]
+            formUpdate.pop()
+            setForm(formUpdate)
         }
 
     }
