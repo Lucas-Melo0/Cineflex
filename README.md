@@ -1,7 +1,7 @@
 # Project09-Cineflex
 
 #  About the project
- A single page application **Tickets booking** website where you can watch your favorite movie, made using data from an API provided by Driven. .<br />          
+ A single page application **Tickets booking** website where you can watch your favorite movie, made using data from an API provided by Driven. <br />          
  This is my 9th project at Driven bootcamp
  
 
